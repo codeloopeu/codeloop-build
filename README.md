@@ -40,6 +40,13 @@ To use plugins you need to add [jitpack](https://jitpack.io) to plugin managemen
 
 ```kts
 pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == "eu.codeloop") {
+                useModule("com.github.codeloopeu.codeloop-build:${requested.id}.gradle.plugin:${requested.version}")
+            }
+        }
+    }
     repositories {
         gradlePluginPortal()
         maven { url = uri("https://jitpack.io") }
@@ -57,7 +64,8 @@ rootProject.name = "app-name"
 
 ```kts
 plugins {
-        id("eu.codeloop.java") version "<CURRENT_RELEASE>"
+    java
+    id("eu.codeloop.java") version "<CURRENT_RELEASE>"
 }
 ```
 
@@ -67,7 +75,8 @@ plugins {
 
 ```kts
 plugins {
-        id("eu.codeloop.springboot") version "<CURRENT_RELEASE>"
+    java
+    id("eu.codeloop.springboot") version "<CURRENT_RELEASE>"
 }
 ```
 
@@ -77,6 +86,7 @@ plugins {
 
 ```kts
 plugins {
+    java
     id("eu.codeloop.kotlin") version "<CURRENT_RELEASE>"
 }
 ```
