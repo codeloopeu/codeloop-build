@@ -5,10 +5,32 @@
 
 ## Features
 
-* checkstyle
-* pmd
-* spotbugs
-* ...
+### Java
+
+* Java compiler options
+* Lombok
+* Checkstyle
+* PMD
+* SpotBugs
+* Jacoco
+* Spock
+* Repositories
+* Dependency Management
+* Gradle Wrapper
+
+## Kotlin
+
+* Kotlin compiler options
+* Repositories
+* Dependency Management
+* Detekt
+* Jacoco
+* Gradle Wrapper
+
+## Spring Boot
+
+* Spring Boot Configuration
+* Git Properties Configuration (actuator/info)
 
 ## Settings
 
