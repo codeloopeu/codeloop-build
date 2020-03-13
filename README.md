@@ -36,7 +36,7 @@
 
 To use plugins you need to add [jitpack](https://jitpack.io) to plugin management repositories.
 
-`settings.gradle`
+`settings.gradle.kts`
 
 ```kts
 pluginManagement {
