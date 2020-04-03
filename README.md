@@ -90,3 +90,9 @@ plugins {
     id("eu.codeloop.kotlin") version "<CURRENT_RELEASE>"
 }
 ```
+
+## Development
+
+```sh
+./gradlew clean check publishToMavenLocal
+```

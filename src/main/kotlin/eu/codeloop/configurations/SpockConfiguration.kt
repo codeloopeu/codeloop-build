@@ -1,5 +1,7 @@
 package eu.codeloop.configurations
 
+import eu.codeloop.ext.ext
+import eu.codeloop.ext.sourceSets
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.plugins.GroovyPlugin
@@ -9,13 +11,15 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withConvention
-import eu.codeloop.ext.sourceSets
+import org.gradle.kotlin.dsl.withType
 
 class SpockConfiguration : Configuration {
 
     @SuppressWarnings("StringLiteralDuplication")
     override fun configure(): Action<Project> = Action {
         plugins.apply(GroovyPlugin::class)
+
+        ext["groovy.version"] = "3.0.1"
 
         sourceSets {
             create("integration-test") {
@@ -39,6 +43,10 @@ class SpockConfiguration : Configuration {
 
         tasks.named("check") {
             dependsOn("integrationTest")
+        }
+
+        tasks.withType<Test>().configureEach {
+            useJUnitPlatform()
         }
     }
 }

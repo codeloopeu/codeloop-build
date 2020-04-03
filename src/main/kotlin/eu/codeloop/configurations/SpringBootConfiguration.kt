@@ -19,6 +19,8 @@ class SpringBootConfiguration : Configuration {
 
         tasks.named<BootRun>("bootRun") {
             systemProperties = System.getProperties().mapKeys { it.key.toString() }
+            jvmArgs = listOf("-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005")
+            args = listOf("--spring.profiles.active=localhost")
         }
     }
 }

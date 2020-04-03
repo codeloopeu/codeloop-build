@@ -1,5 +1,6 @@
 package eu.codeloop.configurations
 
+import eu.codeloop.ext.textResource
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.plugins.quality.Checkstyle
@@ -8,7 +9,6 @@ import org.gradle.api.plugins.quality.CheckstylePlugin
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
-import eu.codeloop.ext.textResource
 
 class CheckstyleConfiguration : Configuration {
 
@@ -16,7 +16,7 @@ class CheckstyleConfiguration : Configuration {
         plugins.apply(CheckstylePlugin::class)
 
         configure<CheckstyleExtension> {
-            toolVersion = "8.30"
+            toolVersion = "8.31"
             isShowViolations = true
             maxWarnings = 0
             config = textResource("checkstyle.xml")

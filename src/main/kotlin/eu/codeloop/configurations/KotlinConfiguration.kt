@@ -1,5 +1,6 @@
 package eu.codeloop.configurations
 
+import eu.codeloop.ext.sourceSets
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
@@ -11,7 +12,6 @@ import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import eu.codeloop.ext.sourceSets
 
 class KotlinConfiguration : Configuration {
 

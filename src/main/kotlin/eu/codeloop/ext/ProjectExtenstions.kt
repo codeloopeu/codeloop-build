@@ -5,6 +5,7 @@ import io.freefair.gradle.plugins.lombok.LombokExtension
 import io.spring.gradle.dependencymanagement.internal.dsl.StandardDependencyManagementExtension
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
+import org.gradle.api.plugins.ExtraPropertiesExtension
 import org.gradle.api.resources.TextResource
 import org.gradle.api.tasks.SourceSetContainer
 import org.springframework.boot.gradle.dsl.SpringBootExtension
@@ -38,3 +39,7 @@ fun Project.lombok(configure: LombokExtension.() -> Unit) =
 @SuppressWarnings("UnsafeCast")
 fun Project.springBoot(configure: SpringBootExtension.() -> Unit) =
         (this as ExtensionAware).extensions.configure("springBoot", configure)
+
+val Project.ext: ExtraPropertiesExtension
+    @SuppressWarnings("UnsafeCast")
+    get() = (this as ExtensionAware).extensions.getByName("ext") as ExtraPropertiesExtension

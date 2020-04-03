@@ -1,12 +1,12 @@
 package eu.codeloop.configurations
 
+import eu.codeloop.ext.textResource
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
-import eu.codeloop.ext.textResource
 
 class DetektConfiguration : Configuration {
 
@@ -14,7 +14,7 @@ class DetektConfiguration : Configuration {
         plugins.apply(DetektPlugin::class)
 
         configure<DetektExtension> {
-            toolVersion = "1.6.0"
+            toolVersion = "1.7.4"
             failFast = true
             config = files("$buildDir/tmp/detekt.yml")
             input = files("src/main/kotlin", "src/test/kotlin", "src/integration-test/kotlin")
