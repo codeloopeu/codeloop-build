@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "eu.codeloop"
-version = "2.2.6.0-SNAPSHOT"
+version = "2.2.7.0"
 
 gradlePlugin {
     plugins {
