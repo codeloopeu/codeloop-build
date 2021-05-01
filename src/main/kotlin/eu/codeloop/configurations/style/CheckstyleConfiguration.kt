@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.style
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.textResource
 import org.gradle.api.Action
 import org.gradle.api.Project

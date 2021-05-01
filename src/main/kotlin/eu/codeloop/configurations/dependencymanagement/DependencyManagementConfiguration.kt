@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.dependencymanagement
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.dependencyManagement
 import io.spring.gradle.dependencymanagement.DependencyManagementPlugin
 import org.gradle.api.Action

@@ -4,12 +4,12 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.closureOf
 import eu.codeloop.configurations.Configuration
-import eu.codeloop.configurations.DependencyManagementConfiguration
-import eu.codeloop.configurations.DetektConfiguration
-import eu.codeloop.configurations.JacocoReportConfiguration
-import eu.codeloop.configurations.KotlinConfiguration
-import eu.codeloop.configurations.RepositoriesConfiguration
-import eu.codeloop.configurations.WrapperConfiguration
+import eu.codeloop.configurations.dependencymanagement.DependencyManagementConfiguration
+import eu.codeloop.configurations.tool.DetektConfiguration
+import eu.codeloop.configurations.tool.JacocoReportConfiguration
+import eu.codeloop.configurations.tool.KotlinConfiguration
+import eu.codeloop.configurations.dependencymanagement.RepositoriesConfiguration
+import eu.codeloop.configurations.tool.WrapperConfiguration
 
 open class CodeloopKotlinPlugin : Plugin<Project> {
     override fun apply(project: Project) {

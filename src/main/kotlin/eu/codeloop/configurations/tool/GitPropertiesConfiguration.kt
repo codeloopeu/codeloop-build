@@ -1,6 +1,7 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.tool
 
 import com.gorylenko.GitPropertiesPlugin
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.gitProperties
 import org.gradle.api.Action
 import org.gradle.api.Project

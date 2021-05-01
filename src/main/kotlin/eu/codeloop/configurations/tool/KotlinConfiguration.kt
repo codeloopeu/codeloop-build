@@ -1,35 +1,38 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.tool
 
-import eu.codeloop.ext.ext
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.sourceSets
 import org.gradle.api.Action
 import org.gradle.api.Project
-import org.gradle.api.plugins.GroovyPlugin
-import org.gradle.api.tasks.GroovySourceSet
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withConvention
 import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class SpockConfiguration : Configuration {
+class KotlinConfiguration : Configuration {
 
     @SuppressWarnings("StringLiteralDuplication")
     override fun configure(): Action<Project> = Action {
-        plugins.apply(GroovyPlugin::class)
+        plugins.apply(KotlinPlatformJvmPlugin::class)
 
-        ext["groovy.version"] = "3.0.1"
+        tasks.withType<KotlinCompile>().configureEach {
+            kotlinOptions.jvmTarget = "1.8"
+            kotlinOptions.freeCompilerArgs += listOf("-Xjsr305=strict")
+        }
 
         sourceSets {
             create("integration-test") {
-                java.srcDir("src/integration-test/java")
-                withConvention(GroovySourceSet::class) {
-                    groovy.srcDir(file("src/integration-test/groovy"))
+                withConvention(KotlinSourceSet::class) {
+                    kotlin.srcDir(file("src/integration-test/kotlin"))
                 }
                 resources.srcDir("src/integration-test/resources")
-                compileClasspath += sourceSets["main"].output + sourceSets["test"].output + configurations["testRuntimeClasspath"]
-                runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
+                compileClasspath += sourceSets["main"].output + sourceSets["test"].output
+                runtimeClasspath += sourceSets["main"].output + sourceSets["test"].output
             }
         }
 
@@ -43,10 +46,6 @@ class SpockConfiguration : Configuration {
 
         tasks.named("check") {
             dependsOn("integrationTest")
-        }
-
-        tasks.withType<Test>().configureEach {
-            useJUnitPlatform()
         }
     }
 }

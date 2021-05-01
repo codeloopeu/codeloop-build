@@ -1,37 +1,36 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.tool
 
+import eu.codeloop.configurations.Configuration
+import eu.codeloop.ext.ext
 import eu.codeloop.ext.sourceSets
 import org.gradle.api.Action
 import org.gradle.api.Project
+import org.gradle.api.plugins.GroovyPlugin
+import org.gradle.api.tasks.GroovySourceSet
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withConvention
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformJvmPlugin
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class KotlinConfiguration : Configuration {
+class SpockConfiguration : Configuration {
 
     @SuppressWarnings("StringLiteralDuplication")
     override fun configure(): Action<Project> = Action {
-        plugins.apply(KotlinPlatformJvmPlugin::class)
+        plugins.apply(GroovyPlugin::class)
 
-        tasks.withType<KotlinCompile>().configureEach {
-            kotlinOptions.jvmTarget = "1.8"
-            kotlinOptions.freeCompilerArgs += listOf("-Xjsr305=strict")
-        }
+        ext["groovy.version"] = "3.0.1"
 
         sourceSets {
             create("integration-test") {
-                withConvention(KotlinSourceSet::class) {
-                    kotlin.srcDir(file("src/integration-test/kotlin"))
+                java.srcDir("src/integration-test/java")
+                withConvention(GroovySourceSet::class) {
+                    groovy.srcDir(file("src/integration-test/groovy"))
                 }
                 resources.srcDir("src/integration-test/resources")
-                compileClasspath += sourceSets["main"].output + sourceSets["test"].output
-                runtimeClasspath += sourceSets["main"].output + sourceSets["test"].output
+                compileClasspath += sourceSets["main"].output + sourceSets["test"].output + configurations["testRuntimeClasspath"]
+                runtimeClasspath += output + compileClasspath + sourceSets["test"].runtimeClasspath
             }
         }
 
@@ -45,6 +44,10 @@ class KotlinConfiguration : Configuration {
 
         tasks.named("check") {
             dependsOn("integrationTest")
+        }
+
+        tasks.withType<Test>().configureEach {
+            useJUnitPlatform()
         }
     }
 }

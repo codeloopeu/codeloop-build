@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.tool
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.lombok
 import io.freefair.gradle.plugins.lombok.LombokPlugin
 import org.gradle.api.Action

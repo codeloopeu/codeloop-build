@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.spring
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.springBoot
 import org.gradle.api.Action
 import org.gradle.api.Project

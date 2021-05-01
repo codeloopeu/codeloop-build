@@ -1,8 +1,9 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.style
 
 import com.github.spotbugs.SpotBugsExtension
 import com.github.spotbugs.SpotBugsPlugin
 import com.github.spotbugs.SpotBugsTask
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.isMain
 import org.gradle.api.Action
 import org.gradle.api.Project
