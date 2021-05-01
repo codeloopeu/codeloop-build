@@ -1,20 +1,13 @@
 package eu.codeloop
 
-import org.gradle.api.Plugin
-import org.gradle.api.Project
 import eu.codeloop.configurations.Configuration
-import eu.codeloop.configurations.GitPropertiesConfiguration
-import eu.codeloop.configurations.SpringBootConfiguration
+import eu.codeloop.configurations.spring.SpringBootConfiguration
+import eu.codeloop.configurations.tool.GitPropertiesConfiguration
 
-open class CodeloopSpringBootPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
-        project.afterEvaluate {
-            val configurations: List<Configuration> = listOf(
-                    SpringBootConfiguration(),
-                    GitPropertiesConfiguration()
-            )
+open class CodeloopSpringBootPlugin : CodeloopPlugin {
 
-            configurations.forEach { it.configureAndExec(this) }
-        }
-    }
+    override fun onAfterEvaluate(): List<Configuration> = listOf(
+        SpringBootConfiguration(),
+        GitPropertiesConfiguration()
+    )
 }

@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.style
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.textResource
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
@@ -14,8 +15,9 @@ class DetektConfiguration : Configuration {
         plugins.apply(DetektPlugin::class)
 
         configure<DetektExtension> {
-            toolVersion = "1.7.4"
-            failFast = true
+            toolVersion = "1.16.0"
+            buildUponDefaultConfig = true
+            allRules = true
             config = files("$buildDir/tmp/detekt.yml")
             input = files("src/main/kotlin", "src/test/kotlin", "src/integration-test/kotlin")
         }
@@ -26,6 +28,6 @@ class DetektConfiguration : Configuration {
             file.writeText(textResource("detekt.yml").asString())
         }
 
-        dependencies.add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:1.6.0")
+        dependencies.add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
     }
 }

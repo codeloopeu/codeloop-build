@@ -1,12 +1,6 @@
 style:
   MaxLineLength:
     maxLineLength: 160
-  WildcardImport:
-    excludes: ""
-
-potential-bugs:
-  LateinitUsage:
-    excludeAnnotatedProperties: "Column, Value"
 
 comments:
   UndocumentedPublicClass:

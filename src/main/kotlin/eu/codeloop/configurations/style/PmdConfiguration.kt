@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.style
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.isMain
 import eu.codeloop.ext.textResource
 import org.gradle.api.Action
@@ -17,7 +18,7 @@ class PmdConfiguration : Configuration {
         plugins.apply(PmdPlugin::class)
 
         configure<PmdExtension> {
-            toolVersion = "6.22.0"
+            toolVersion = "6.34.0"
             isConsoleOutput = true
             ruleSets = emptyList()
             ruleSetConfig = textResource("pmd-ruleset.xml")

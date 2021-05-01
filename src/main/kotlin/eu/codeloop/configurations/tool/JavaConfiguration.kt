@@ -1,5 +1,6 @@
-package eu.codeloop.configurations
+package eu.codeloop.configurations.tool
 
+import eu.codeloop.configurations.Configuration
 import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -16,20 +17,20 @@ class JavaConfiguration : Configuration {
         plugins.apply(JavaPlugin::class)
 
         configure<JavaPluginConvention> {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_15
+            targetCompatibility = JavaVersion.VERSION_15
         }
 
         tasks.withType<JavaCompile>().configureEach {
-            options.compilerArgs.addAll(listOf(
+            options.compilerArgs.addAll(
+                listOf(
                     "-Xlint:all",
                     "-Werror",
                     "-parameters",
                     "-Xlint:-processing",
-                    "-Xlint:-serial",
-                    "-Amapstruct.suppressGeneratorTimestamp=true",
-                    "-Amapstruct.suppressGeneratorVersionInfoComment=true"
-            ))
+                    "-Xlint:-serial"
+                )
+            )
         }
     }
 }

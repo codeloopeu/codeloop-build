@@ -1,16 +1,14 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.3.71"
+    kotlin("jvm") version "1.4.31"
     id("java-gradle-plugin")
     id("maven-publish")
-    id("io.gitlab.arturbosch.detekt") version "1.7.4"
-    id("org.gradle.kotlin.kotlin-dsl") version "1.3.4"
-    id("com.github.ben-manes.versions") version "0.28.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("org.gradle.kotlin.kotlin-dsl") version "2.1.4"
+    id("com.github.ben-manes.versions") version "0.38.0"
 }
 
 group = "eu.codeloop"
-version = "2.2.6.0-SNAPSHOT"
+version = "2.2.7.0"
 
 gradlePlugin {
     plugins {
@@ -30,35 +28,37 @@ gradlePlugin {
 }
 
 detekt {
-    failFast = true
+    buildUponDefaultConfig = true
+    allRules = true
     config = files("detekt.yml")
     input = files("src/main/kotlin", "src/test/kotlin")
 }
 
-tasks.withType<KotlinCompile>().configureEach {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions.jvmTarget = "1.8"
     kotlinOptions.freeCompilerArgs += listOf("-Xjsr305=strict")
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
     gradlePluginPortal()
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(gradleApi())
-    implementation("org.gradle.kotlin:plugins:1.3.4")
-    implementation("gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.7.4")
-    implementation("io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE")
-    implementation("io.freefair.gradle:lombok-plugin:5.0.0-rc6")
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.2.6.RELEASE")
-    implementation("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.2")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.71")
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.7.4")
+
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.16.0")
+
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.4.5")
+    implementation("gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.1")
+    implementation("io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE")
+    implementation("io.freefair.gradle:lombok-plugin:6.0.0-m2")
+    implementation("com.gorylenko.gradle-git-properties:gradle-git-properties:2.3.1")
 }
 
 tasks.wrapper {
-    gradleVersion = "6.3"
+    gradleVersion = "7.0"
 }
