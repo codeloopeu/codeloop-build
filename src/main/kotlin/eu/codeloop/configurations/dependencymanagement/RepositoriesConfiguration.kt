@@ -10,7 +10,7 @@ class RepositoriesConfiguration : Configuration {
     override fun configure(): Action<Project> = Action {
         repositories {
             mavenLocal()
-            jcenter()
+            mavenCentral()
             maven {
                 name = "Confluent"
                 url = uri("https://packages.confluent.io/maven/")
