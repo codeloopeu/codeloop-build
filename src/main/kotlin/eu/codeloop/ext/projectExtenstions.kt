@@ -13,18 +13,14 @@ fun Project.textResource(filename: String): TextResource {
     return resources.text.fromUri(resourceUrl.toURI())
 }
 
-@SuppressWarnings("UnsafeCast")
 fun Project.dependencyManagement(configure: StandardDependencyManagementExtension.() -> Unit) =
     (this as ExtensionAware).extensions.configure("dependencyManagement", configure)
 
-@SuppressWarnings("UnsafeCast")
 fun Project.lombok(configure: LombokExtension.() -> Unit) =
     (this as ExtensionAware).extensions.configure("lombok", configure)
 
-@SuppressWarnings("UnsafeCast")
 fun Project.sourceSets(configure: SourceSetContainer.() -> Unit) =
     (this as ExtensionAware).extensions.configure("sourceSets", configure)
 
 val Project.sourceSets: SourceSetContainer
-    @SuppressWarnings("UnsafeCast")
     get() = (this as ExtensionAware).extensions.getByName("sourceSets") as SourceSetContainer

@@ -16,7 +16,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class KotlinConfiguration : Configuration {
 
-    @SuppressWarnings("StringLiteralDuplication")
     override fun configure(): Action<Project> = Action {
         plugins.apply(KotlinPlatformJvmPlugin::class)
 

@@ -12,7 +12,6 @@ import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.register
 import org.gradle.kotlin.dsl.withType
 
-@SuppressWarnings("StringLiteralDuplication")
 class TestConfiguration : Configuration {
 
     override fun configure(): Action<Project> = Action {

@@ -7,9 +7,9 @@ import org.gradle.api.Action
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 
+@Suppress("deprecation")
 class LombokConfiguration : Configuration {
 
-    @Suppress("UnstableApiUsage")
     override fun configure(): Action<Project> = Action {
         plugins.apply(LombokPlugin::class)
 
