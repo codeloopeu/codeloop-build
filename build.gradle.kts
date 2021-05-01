@@ -1,12 +1,10 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.3.71"
+    kotlin("jvm") version "1.3.72"
     id("java-gradle-plugin")
     id("maven-publish")
-    id("io.gitlab.arturbosch.detekt") version "1.7.4"
-    id("org.gradle.kotlin.kotlin-dsl") version "1.3.4"
-    id("com.github.ben-manes.versions") version "0.28.0"
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("org.gradle.kotlin.kotlin-dsl") version "1.3.6"
+    id("com.github.ben-manes.versions") version "0.36.0"
 }
 
 group = "eu.codeloop"
@@ -35,7 +33,7 @@ detekt {
     input = files("src/main/kotlin", "src/test/kotlin")
 }
 
-tasks.withType<KotlinCompile>().configureEach {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions.jvmTarget = "1.8"
     kotlinOptions.freeCompilerArgs += listOf("-Xjsr305=strict")
 }
@@ -48,17 +46,17 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(gradleApi())
-    implementation("org.gradle.kotlin:plugins:1.3.4")
-    implementation("gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0")
-    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.7.4")
-    implementation("io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE")
-    implementation("io.freefair.gradle:lombok-plugin:5.0.0-rc6")
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.2.6.RELEASE")
-    implementation("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.2")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+
+    implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.16.0")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.71")
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.7.4")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.4.1")
+    implementation("gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.6.0")
+    implementation("io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE")
+    implementation("io.freefair.gradle:lombok-plugin:5.3.0")
+    implementation("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.4")
 }
 
 tasks.wrapper {
-    gradleVersion = "6.3"
+    gradleVersion = "6.7.1"
 }

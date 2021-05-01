@@ -1,8 +1,10 @@
 package eu.codeloop.configurations.style
 
-import com.github.spotbugs.SpotBugsExtension
-import com.github.spotbugs.SpotBugsPlugin
-import com.github.spotbugs.SpotBugsTask
+import com.github.spotbugs.snom.Confidence
+import com.github.spotbugs.snom.Effort
+import com.github.spotbugs.snom.SpotBugsExtension
+import com.github.spotbugs.snom.SpotBugsPlugin
+import com.github.spotbugs.snom.SpotBugsTask
 import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.isMain
 import org.gradle.api.Action
@@ -17,15 +19,16 @@ class SpotBugsConfiguration : Configuration {
         plugins.apply(SpotBugsPlugin::class)
 
         configure<SpotBugsExtension> {
-            toolVersion = "4.0.1"
-            effort = "default"
-            reportLevel = "high"
+            toolVersion.set("4.2.0")
+            effort.set(Effort.DEFAULT)
+            reportLevel.set(Confidence.HIGH)
         }
 
         tasks.withType<SpotBugsTask>().configureEach {
             enabled = isMain()
-            reports.html.isEnabled = true
-            reports.xml.isEnabled = false
+            reports.register("text") {
+                isEnabled = true
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ fun Project.textResource(filename: String): TextResource {
 
 @SuppressWarnings("UnsafeCast")
 fun Project.sourceSets(configure: SourceSetContainer.() -> Unit) =
-        (this as ExtensionAware).extensions.configure("sourceSets", configure)
+    (this as ExtensionAware).extensions.configure("sourceSets", configure)
 
 val Project.sourceSets: SourceSetContainer
     @SuppressWarnings("UnsafeCast")
@@ -26,19 +26,19 @@ val Project.sourceSets: SourceSetContainer
 
 @SuppressWarnings("UnsafeCast")
 fun Project.dependencyManagement(configure: StandardDependencyManagementExtension.() -> Unit) =
-        (this as ExtensionAware).extensions.configure("dependencyManagement", configure)
+    (this as ExtensionAware).extensions.configure("dependencyManagement", configure)
 
 @SuppressWarnings("UnsafeCast")
 fun Project.gitProperties(configure: GitPropertiesPluginExtension.() -> Unit) =
-        (this as ExtensionAware).extensions.configure("gitProperties", configure)
+    (this as ExtensionAware).extensions.configure("gitProperties", configure)
 
 @SuppressWarnings("UnsafeCast")
 fun Project.lombok(configure: LombokExtension.() -> Unit) =
-        (this as ExtensionAware).extensions.configure("lombok", configure)
+    (this as ExtensionAware).extensions.configure("lombok", configure)
 
 @SuppressWarnings("UnsafeCast")
 fun Project.springBoot(configure: SpringBootExtension.() -> Unit) =
-        (this as ExtensionAware).extensions.configure("springBoot", configure)
+    (this as ExtensionAware).extensions.configure("springBoot", configure)
 
 val Project.ext: ExtraPropertiesExtension
     @SuppressWarnings("UnsafeCast")

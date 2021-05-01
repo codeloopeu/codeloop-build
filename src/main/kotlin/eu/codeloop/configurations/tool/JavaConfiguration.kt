@@ -22,7 +22,8 @@ class JavaConfiguration : Configuration {
         }
 
         tasks.withType<JavaCompile>().configureEach {
-            options.compilerArgs.addAll(listOf(
+            options.compilerArgs.addAll(
+                listOf(
                     "-Xlint:all",
                     "-Werror",
                     "-parameters",
@@ -30,7 +31,8 @@ class JavaConfiguration : Configuration {
                     "-Xlint:-serial",
                     "-Amapstruct.suppressGeneratorTimestamp=true",
                     "-Amapstruct.suppressGeneratorVersionInfoComment=true"
-            ))
+                )
+            )
         }
     }
 }
