@@ -51,9 +51,9 @@ dependencies {
 
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.16.0")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.4.1")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.4.5")
     implementation("gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.6.0")
-    implementation("io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE")
+    implementation("io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE")
     implementation("io.freefair.gradle:lombok-plugin:5.3.0")
     implementation("gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:2.2.4")
 }

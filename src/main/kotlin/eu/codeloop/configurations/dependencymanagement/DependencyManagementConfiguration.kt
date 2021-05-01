@@ -15,7 +15,7 @@ class DependencyManagementConfiguration : Configuration {
         dependencyManagement {
             imports {
                 mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-                mavenBom("org.springframework.cloud:spring-cloud-dependencies:2020.0.0")
+                mavenBom("org.springframework.cloud:spring-cloud-dependencies:2020.0.2")
             }
             dependencies {
                 dependency("com.google.guava:guava:30.1.1-jre")
