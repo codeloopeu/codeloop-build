@@ -28,7 +28,8 @@ gradlePlugin {
 }
 
 detekt {
-    failFast = true
+    buildUponDefaultConfig = true
+    allRules = true
     config = files("detekt.yml")
     input = files("src/main/kotlin", "src/test/kotlin")
 }

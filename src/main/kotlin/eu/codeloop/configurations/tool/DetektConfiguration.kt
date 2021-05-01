@@ -16,7 +16,8 @@ class DetektConfiguration : Configuration {
 
         configure<DetektExtension> {
             toolVersion = "1.16.0"
-            failFast = true
+            buildUponDefaultConfig = true
+            allRules = true
             config = files("$buildDir/tmp/detekt.yml")
             input = files("src/main/kotlin", "src/test/kotlin", "src/integration-test/kotlin")
         }
