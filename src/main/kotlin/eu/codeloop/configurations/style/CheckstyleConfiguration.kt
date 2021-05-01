@@ -17,7 +17,7 @@ class CheckstyleConfiguration : Configuration {
         plugins.apply(CheckstylePlugin::class)
 
         configure<CheckstyleExtension> {
-            toolVersion = "8.38"
+            toolVersion = "8.42"
             isShowViolations = true
             maxWarnings = 0
             config = textResource("checkstyle.xml")

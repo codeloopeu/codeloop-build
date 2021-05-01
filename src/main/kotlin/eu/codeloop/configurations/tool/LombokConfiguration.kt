@@ -14,7 +14,7 @@ class LombokConfiguration : Configuration {
         plugins.apply(LombokPlugin::class)
 
         lombok {
-            version.set("1.18.16")
+            version.set("1.18.20")
             config.put("lombok.anyConstructor.addConstructorProperties", "true")
             config.put("lombok.val.flagUsage", "error")
             config.put("lombok.var.flagUsage", "error")

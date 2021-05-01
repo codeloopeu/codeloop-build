@@ -18,7 +18,7 @@ class PmdConfiguration : Configuration {
         plugins.apply(PmdPlugin::class)
 
         configure<PmdExtension> {
-            toolVersion = "6.30.0"
+            toolVersion = "6.34.0"
             isConsoleOutput = true
             ruleSets = emptyList()
             ruleSetConfig = textResource("pmd-ruleset.xml")

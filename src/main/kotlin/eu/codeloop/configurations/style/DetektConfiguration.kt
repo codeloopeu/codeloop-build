@@ -1,4 +1,4 @@
-package eu.codeloop.configurations.tool
+package eu.codeloop.configurations.style
 
 import eu.codeloop.configurations.Configuration
 import eu.codeloop.ext.textResource

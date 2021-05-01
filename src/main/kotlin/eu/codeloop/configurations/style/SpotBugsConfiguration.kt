@@ -19,7 +19,7 @@ class SpotBugsConfiguration : Configuration {
         plugins.apply(SpotBugsPlugin::class)
 
         configure<SpotBugsExtension> {
-            toolVersion.set("4.2.0")
+            toolVersion.set("4.2.3")
             effort.set(Effort.DEFAULT)
             reportLevel.set(Confidence.HIGH)
         }

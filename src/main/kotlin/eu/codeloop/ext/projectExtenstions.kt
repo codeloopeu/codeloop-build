@@ -6,7 +6,6 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.api.resources.TextResource
 import org.gradle.api.tasks.SourceSetContainer
-import org.springframework.boot.gradle.dsl.SpringBootExtension
 import java.io.FileNotFoundException
 
 fun Project.textResource(filename: String): TextResource {
@@ -29,7 +28,3 @@ fun Project.sourceSets(configure: SourceSetContainer.() -> Unit) =
 val Project.sourceSets: SourceSetContainer
     @SuppressWarnings("UnsafeCast")
     get() = (this as ExtensionAware).extensions.getByName("sourceSets") as SourceSetContainer
-
-@SuppressWarnings("UnsafeCast")
-fun Project.springBoot(configure: SpringBootExtension.() -> Unit) =
-    (this as ExtensionAware).extensions.configure("springBoot", configure)
