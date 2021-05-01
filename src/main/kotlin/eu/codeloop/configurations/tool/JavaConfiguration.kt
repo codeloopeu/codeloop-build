@@ -17,8 +17,8 @@ class JavaConfiguration : Configuration {
         plugins.apply(JavaPlugin::class)
 
         configure<JavaPluginConvention> {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_15
+            targetCompatibility = JavaVersion.VERSION_15
         }
 
         tasks.withType<JavaCompile>().configureEach {
@@ -28,9 +28,7 @@ class JavaConfiguration : Configuration {
                     "-Werror",
                     "-parameters",
                     "-Xlint:-processing",
-                    "-Xlint:-serial",
-                    "-Amapstruct.suppressGeneratorTimestamp=true",
-                    "-Amapstruct.suppressGeneratorVersionInfoComment=true"
+                    "-Xlint:-serial"
                 )
             )
         }

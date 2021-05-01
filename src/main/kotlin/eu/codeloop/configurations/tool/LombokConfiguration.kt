@@ -14,11 +14,10 @@ class LombokConfiguration : Configuration {
         plugins.apply(LombokPlugin::class)
 
         lombok {
-            config.put("config.stopBubbling", "true")
-            config.put("lombok.extern.findbugs.addSuppressFBWarnings", "true")
-            config.put("lombok.addLombokGeneratedAnnotation", "true")
+            version.set("1.18.16")
             config.put("lombok.anyConstructor.addConstructorProperties", "true")
             config.put("lombok.val.flagUsage", "error")
+            config.put("lombok.var.flagUsage", "error")
         }
     }
 }

@@ -17,15 +17,14 @@ class JacocoReportConfiguration : Configuration {
         plugins.apply(JacocoPlugin::class)
 
         configure<JacocoPluginExtension> {
-            toolVersion = "0.8.5"
+            toolVersion = "0.8.7-SNAPSHOT"
         }
 
         tasks.withType<JacocoReport> {
             reports {
-                xml.apply {
-                    isEnabled = false
-                    destination = file("$buildDir/jacocoHtml")
-                }
+                xml.isEnabled = true
+                html.isEnabled = true
+                csv.isEnabled = false
                 executionData(tasks.withType<Test>())
             }
         }

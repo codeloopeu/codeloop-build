@@ -15,7 +15,7 @@ class DetektConfiguration : Configuration {
         plugins.apply(DetektPlugin::class)
 
         configure<DetektExtension> {
-            toolVersion = "1.7.4"
+            toolVersion = "1.16.0"
             failFast = true
             config = files("$buildDir/tmp/detekt.yml")
             input = files("src/main/kotlin", "src/test/kotlin", "src/integration-test/kotlin")
@@ -27,6 +27,6 @@ class DetektConfiguration : Configuration {
             file.writeText(textResource("detekt.yml").asString())
         }
 
-        dependencies.add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:1.6.0")
+        dependencies.add("detektPlugins", "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
     }
 }

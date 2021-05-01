@@ -1,5 +1,6 @@
 package eu.codeloop
 
+import eu.codeloop.configurations.Configuration
 import eu.codeloop.configurations.dependencymanagement.DependencyManagementConfiguration
 import eu.codeloop.configurations.dependencymanagement.RepositoriesConfiguration
 import eu.codeloop.configurations.style.CheckstyleConfiguration
@@ -10,36 +11,22 @@ import eu.codeloop.configurations.tool.JavaConfiguration
 import eu.codeloop.configurations.tool.LombokConfiguration
 import eu.codeloop.configurations.tool.SpockConfiguration
 import eu.codeloop.configurations.tool.WrapperConfiguration
-import org.gradle.api.Plugin
-import org.gradle.api.Project
-import org.gradle.kotlin.dsl.closureOf
 
-open class CodeloopJavaPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
-        project.configure(
-            project,
-            closureOf<Project> {
-                val configurations = listOf(
-                    JavaConfiguration(),
-                    SpockConfiguration(),
-                    RepositoriesConfiguration(),
-                    DependencyManagementConfiguration()
-                )
-                configurations.forEach { it.configureAndExec(this) }
-            }
-        )
+open class CodeloopJavaPlugin : CodeloopPlugin {
 
-        project.afterEvaluate {
-            val configurations = listOf(
-                CheckstyleConfiguration(),
-                PmdConfiguration(),
-                SpotBugsConfiguration(),
-                JacocoReportConfiguration(),
-                LombokConfiguration(),
-                WrapperConfiguration()
-            )
+    override fun onConfigure(): List<Configuration> = listOf(
+        JavaConfiguration(),
+        SpockConfiguration(),
+        RepositoriesConfiguration(),
+        DependencyManagementConfiguration()
+    )
 
-            configurations.forEach { it.configureAndExec(this) }
-        }
-    }
+    override fun onAfterEvaluate(): List<Configuration> = listOf(
+        CheckstyleConfiguration(),
+        PmdConfiguration(),
+        SpotBugsConfiguration(),
+        JacocoReportConfiguration(),
+        LombokConfiguration(),
+        WrapperConfiguration()
+    )
 }

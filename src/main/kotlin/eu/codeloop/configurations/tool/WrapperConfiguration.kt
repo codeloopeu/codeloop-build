@@ -10,7 +10,7 @@ class WrapperConfiguration : Configuration {
 
     override fun configure(): Action<Project> = Action {
         tasks.named<Wrapper>("wrapper") {
-            gradleVersion = "6.3"
+            gradleVersion = "6.7.1"
         }
     }
 }
