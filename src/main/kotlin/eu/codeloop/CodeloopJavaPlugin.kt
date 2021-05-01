@@ -9,14 +9,14 @@ import eu.codeloop.configurations.style.SpotBugsConfiguration
 import eu.codeloop.configurations.tool.JacocoReportConfiguration
 import eu.codeloop.configurations.tool.JavaConfiguration
 import eu.codeloop.configurations.tool.LombokConfiguration
-import eu.codeloop.configurations.tool.SpockConfiguration
+import eu.codeloop.configurations.tool.TestConfiguration
 import eu.codeloop.configurations.tool.WrapperConfiguration
 
 open class CodeloopJavaPlugin : CodeloopPlugin {
 
     override fun onConfigure(): List<Configuration> = listOf(
         JavaConfiguration(),
-        SpockConfiguration(),
+        TestConfiguration(),
         RepositoriesConfiguration(),
         DependencyManagementConfiguration()
     )
