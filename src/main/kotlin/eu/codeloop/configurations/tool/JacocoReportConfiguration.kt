@@ -17,7 +17,7 @@ class JacocoReportConfiguration : Configuration {
         plugins.apply(JacocoPlugin::class)
 
         configure<JacocoPluginExtension> {
-            toolVersion = "0.8.7-SNAPSHOT"
+            toolVersion = "0.8.7"
         }
 
         tasks.withType<JacocoReport> {
